@@ -1,0 +1,11 @@
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Domain\bin\Debug\net9.0\RestApiEshop.Domain.deps.json
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Domain\bin\Debug\net9.0\RestApiEshop.Domain.dll
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Domain\bin\Debug\net9.0\RestApiEshop.Domain.pdb
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Domain\obj\Debug\net9.0\RestApiEshop.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Domain\obj\Debug\net9.0\RestApiEshop.Domain.AssemblyInfoInputs.cache
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Domain\obj\Debug\net9.0\RestApiEshop.Domain.AssemblyInfo.cs
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Domain\obj\Debug\net9.0\RestApiEshop.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Domain\obj\Debug\net9.0\RestApiEshop.Domain.dll
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Domain\obj\Debug\net9.0\refint\RestApiEshop.Domain.dll
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Domain\obj\Debug\net9.0\RestApiEshop.Domain.pdb
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Domain\obj\Debug\net9.0\ref\RestApiEshop.Domain.dll

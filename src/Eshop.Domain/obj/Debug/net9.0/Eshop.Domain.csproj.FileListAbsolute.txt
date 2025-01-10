@@ -1,0 +1,11 @@
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\bin\Debug\net9.0\Eshop.Domain.deps.json
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\bin\Debug\net9.0\Eshop.Domain.dll
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\bin\Debug\net9.0\Eshop.Domain.pdb
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.AssemblyInfoInputs.cache
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.AssemblyInfo.cs
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.dll
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\refint\Eshop.Domain.dll
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.pdb
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\ref\Eshop.Domain.dll

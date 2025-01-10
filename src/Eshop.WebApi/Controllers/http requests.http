@@ -1,0 +1,4 @@
+@host=http://localhost
+@port=5247
+
+GET {{host}}:{{port}}/api/Orders

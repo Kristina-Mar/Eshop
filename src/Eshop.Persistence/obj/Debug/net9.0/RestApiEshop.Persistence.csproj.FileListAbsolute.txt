@@ -1,0 +1,17 @@
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\bin\Debug\net9.0\RestApiEshop.Persistence.deps.json
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\bin\Debug\net9.0\RestApiEshop.Persistence.runtimeconfig.json
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\bin\Debug\net9.0\RestApiEshop.Persistence.dll
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\bin\Debug\net9.0\RestApiEshop.Persistence.pdb
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\bin\Debug\net9.0\RestApiEshop.Domain.dll
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\bin\Debug\net9.0\RestApiEshop.Domain.pdb
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\obj\Debug\net9.0\RestApiEshop.Persistence.csproj.AssemblyReference.cache
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\obj\Debug\net9.0\RestApiEshop.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\obj\Debug\net9.0\RestApiEshop.Persistence.AssemblyInfoInputs.cache
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\obj\Debug\net9.0\RestApiEshop.Persistence.AssemblyInfo.cs
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\obj\Debug\net9.0\RestApiEshop.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\obj\Debug\net9.0\RestApiE.C090556D.Up2Date
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\obj\Debug\net9.0\RestApiEshop.Persistence.dll
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\obj\Debug\net9.0\refint\RestApiEshop.Persistence.dll
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\obj\Debug\net9.0\RestApiEshop.Persistence.pdb
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\obj\Debug\net9.0\RestApiEshop.Persistence.genruntimeconfig.cache
+C:\Users\Kika\Documents\C#\REST API eshop\src\RestApiEshop.Persistence\obj\Debug\net9.0\ref\RestApiEshop.Persistence.dll

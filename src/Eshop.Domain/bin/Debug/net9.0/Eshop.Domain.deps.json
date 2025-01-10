@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "Eshop.Domain/1.0.0": {
+        "runtime": {
+          "Eshop.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Eshop.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

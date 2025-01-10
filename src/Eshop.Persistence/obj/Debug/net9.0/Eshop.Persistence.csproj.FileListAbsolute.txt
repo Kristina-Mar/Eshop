@@ -1,0 +1,17 @@
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Persistence.csproj.AssemblyReference.cache
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Persistence.AssemblyInfoInputs.cache
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Persistence.AssemblyInfo.cs
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\bin\Debug\net9.0\Eshop.Persistence.deps.json
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\bin\Debug\net9.0\Eshop.Persistence.runtimeconfig.json
+c:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\bin\Debug\net9.0\Eshop.Persistence.dll
+c:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\bin\Debug\net9.0\Eshop.Persistence.pdb
+c:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\bin\Debug\net9.0\Eshop.Domain.dll
+c:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\bin\Debug\net9.0\Eshop.Domain.pdb
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Pe.B887B489.Up2Date
+c:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Persistence.dll
+c:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\refint\Eshop.Persistence.dll
+c:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Persistence.pdb
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Persistence.genruntimeconfig.cache
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\ref\Eshop.Persistence.dll
