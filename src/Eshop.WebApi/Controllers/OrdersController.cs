@@ -12,7 +12,7 @@ namespace Eshop.WebApi.Controllers
         private readonly IRepository<Order> repository = repository;
 
         [HttpGet]
-        public ActionResult<IEnumerable<Order>> Read()
+        public ActionResult<IEnumerable<OrderGetResponseDto>> Read()
         {
             IEnumerable<Order> allOrders;
 
@@ -29,7 +29,7 @@ namespace Eshop.WebApi.Controllers
         }
 
         [HttpGet("{orderId:int}")]
-        public ActionResult<Order> ReadById(int orderId)
+        public ActionResult<OrderGetResponseDto> ReadById(int orderId)
         {
             Order order;
 
