@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddSwaggerGen();
 
     builder.Services.AddDbContext<OrdersContext>();
-    builder.Services.AddScoped<IRepository<Order>, OrderRepository>();
+    builder.Services.AddScoped<IRepositoryAsync<Order>, OrderRepositoryAsync>();
 }
 
 var app = builder.Build();

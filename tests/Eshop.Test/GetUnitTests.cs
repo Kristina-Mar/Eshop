@@ -12,10 +12,10 @@ using NSubstitute.ExceptionExtensions;
 public class GetUnitTests
 {
     [Fact]
-    public void Get_OrdersAvailable_ReturnsOk()
+    public async Task Get_OrdersAvailable_ReturnsOk()
     {
         // Arrange
-        var repositoryMock = Substitute.For<IRepository<Order>>();
+        var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
         var controller = new OrdersController(repositoryMock);
 
         List<Order> ordersFromRepository = new() {
@@ -41,7 +41,7 @@ public class GetUnitTests
             }
         };
 
-        repositoryMock.Read().Returns(ordersFromRepository);
+        repositoryMock.ReadAsync().Returns(ordersFromRepository);
 
         List<OrderGetResponseDto> expectedOrdersDto = new() {
            new() {
@@ -68,49 +68,49 @@ public class GetUnitTests
         };
 
         // Act
-        var result = controller.Read();
+        var result = await controller.ReadAsync();
 
         // Assert
         var resultResult = Assert.IsType<OkObjectResult>(result.Result);
         var realOrders = resultResult.Value as List<OrderGetResponseDto>;
         Assert.Equivalent(expectedOrdersDto, realOrders, true);
         Assert.NotNull(realOrders);
-        repositoryMock.Received(1).Read();
+        await repositoryMock.Received(1).ReadAsync();
     }
 
     [Fact]
-    public void Get_OrdersNull_ReturnsNotFound()
+    public async Task Get_OrdersNull_ReturnsNotFound()
     {
         // Arrange
-        var repositoryMock = Substitute.For<IRepository<Order>>();
+        var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
         var controller = new OrdersController(repositoryMock);
         var noOrders = new List<Order>();
 
-        repositoryMock.Read().Returns(noOrders);
+        repositoryMock.ReadAsync().Returns(noOrders);
 
         // Act
-        var result = controller.Read();
+        var result = await controller.ReadAsync();
 
         // Assert
         Assert.IsType<NotFoundResult>(result.Result);
-        repositoryMock.Received(1).Read();
+        await repositoryMock.Received(1).ReadAsync();
     }
 
     [Fact]
-    public void Get_UnexpectedError_Returns500()
+    public async Task Get_UnexpectedError_Returns500()
     {
         // Arrange
-        var repositoryMock = Substitute.For<IRepository<Order>>();
+        var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
         var controller = new OrdersController(repositoryMock);
 
-        repositoryMock.Read().Throws(new Exception());
+        repositoryMock.ReadAsync().Throws(new Exception());
 
         // Act
-        var actionResult = controller.Read();
+        var actionResult = await controller.ReadAsync();
 
         // Assert
         var resultResult = Assert.IsType<ObjectResult>(actionResult.Result);
         Assert.Equal(StatusCodes.Status500InternalServerError, resultResult.StatusCode);
-        repositoryMock.Received(1).Read();
+        await repositoryMock.Received(1).ReadAsync();
     }
 }

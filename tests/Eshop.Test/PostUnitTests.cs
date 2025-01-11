@@ -14,10 +14,10 @@ using NSubstitute.ExceptionExtensions;
 public class PostUnitTests
 {
     [Fact]
-    public void Post_ValidRequest_ReturnsOk()
+    public async Task Post_ValidRequest_ReturnsOk()
     {
         // Arrange
-        var repositoryMock = Substitute.For<IRepository<Order>>();
+        var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
         var controller = new OrdersController(repositoryMock);
 
         OrderCreateRequestDto orderRequestDto = new(
@@ -50,7 +50,7 @@ public class PostUnitTests
             },
         };
 
-        repositoryMock.When(r => r.Create(Arg.Any<Order>())).Do(callInfo =>
+        repositoryMock.When(r => r.CreateAsync(Arg.Any<Order>())).Do(callInfo =>
         {
             var order = callInfo.Arg<Order>();
             order.OrderId = 1;
@@ -60,24 +60,24 @@ public class PostUnitTests
         });
 
         // Act
-        var result = controller.Create(orderRequestDto);
+        var result = await controller.CreateAsync(orderRequestDto);
 
         // Assert
         var resultResult = Assert.IsType<CreatedAtActionResult>(result);
         var realOrder = resultResult.Value as OrderGetResponseDto;
         Assert.Equivalent(orderReturnedFromRepository, realOrder, true);
         Assert.NotNull(realOrder);
-        repositoryMock.Received(1).Create(Arg.Any<Order>());
+        await repositoryMock.Received(1).CreateAsync(Arg.Any<Order>());
     }
 
     [Fact]
-    public void Post_UnexpectedError_Returns500()
+    public async Task Post_UnexpectedError_Returns500()
     {
         // Arrange
-        var repositoryMock = Substitute.For<IRepository<Order>>();
+        var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
         var controller = new OrdersController(repositoryMock);
 
-        repositoryMock.When(r => r.Create(Arg.Any<Order>())).Throws(new Exception());
+        repositoryMock.When(r => r.CreateAsync(Arg.Any<Order>())).Throws(new Exception());
 
         OrderCreateRequestDto orderRequestDto = new(
             "customer",
@@ -89,11 +89,11 @@ public class PostUnitTests
                 );
 
         // Act
-        var actionResult = controller.Create(orderRequestDto);
+        var actionResult = await controller.CreateAsync(orderRequestDto);
 
         // Assert
         var resultResult = Assert.IsType<ObjectResult>(actionResult);
         Assert.Equal(StatusCodes.Status500InternalServerError, resultResult.StatusCode);
-        repositoryMock.Received(1).Create(Arg.Any<Order>());
+        await repositoryMock.Received(1).CreateAsync(Arg.Any<Order>());
     }
 }

@@ -3,31 +3,31 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Eshop.Persistence.Repositories
 {
-    public class OrderRepository : IRepository<Order>
+    public class OrderRepositoryAsync : IRepositoryAsync<Order>
     {
         private readonly OrdersContext context;
-        public OrderRepository(OrdersContext context)
+        public OrderRepositoryAsync(OrdersContext context)
         {
             this.context = context;
         }
 
-        public IEnumerable<Order> Read()
+        public async Task<IEnumerable<Order>> ReadAsync()
         {
-            return context.Orders.Include(o => o.OrderItems).ToList();
+            return await context.Orders.Include(o => o.OrderItems).ToListAsync();
         }
 
-        public Order ReadById(int orderId)
+        public async Task<Order> ReadByIdAsync(int orderId)
         {
-            return context.Orders.Include(o => o.OrderItems).ToList().Find(o => o.OrderId == orderId);
+            return await context.Orders.Include(o => o.OrderItems).FirstAsync(o => o.OrderId == orderId);
         }
 
-        public void Create(Order order)
+        public async Task CreateAsync(Order order)
         {
-            context.Add(order);
-            context.SaveChanges();
+            await context.AddAsync(order);
+            await context.SaveChangesAsync();
         }
 
-        public void Update(int orderId, bool isPaid)
+        public async Task UpdateAsync(int orderId, bool isPaid)
         {
             Order orderToUpdate = context.Orders.Find(orderId) ?? throw new KeyNotFoundException();
             if (isPaid)
@@ -38,7 +38,7 @@ namespace Eshop.Persistence.Repositories
             {
                 context.Entry(orderToUpdate).CurrentValues.SetValues(orderToUpdate.Status = Order.OrderStatus.Cancelled);
             }
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
     }
 }

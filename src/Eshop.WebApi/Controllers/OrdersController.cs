@@ -7,18 +7,18 @@ namespace Eshop.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OrdersController(IRepository<Order> repository) : ControllerBase
+    public class OrdersController(IRepositoryAsync<Order> repository) : ControllerBase
     {
-        private readonly IRepository<Order> repository = repository;
+        private readonly IRepositoryAsync<Order> repository = repository;
 
         [HttpGet]
-        public ActionResult<IEnumerable<OrderGetResponseDto>> Read()
+        public async Task<ActionResult<IEnumerable<OrderGetResponseDto>>> ReadAsync()
         {
             IEnumerable<Order> allOrders;
 
             try
             {
-                allOrders = repository.Read();
+                allOrders = await repository.ReadAsync();
             }
             catch (Exception e)
             {
@@ -29,13 +29,14 @@ namespace Eshop.WebApi.Controllers
         }
 
         [HttpGet("{orderId:int}")]
-        public ActionResult<OrderGetResponseDto> ReadById(int orderId)
+        [ActionName(nameof(ReadByIdAsync))]
+        public async Task<ActionResult<OrderGetResponseDto>> ReadByIdAsync(int orderId)
         {
             Order order;
 
             try
             {
-                order = repository.ReadById(orderId);
+                order = await repository.ReadByIdAsync(orderId);
             }
             catch (Exception e)
             {
@@ -46,26 +47,26 @@ namespace Eshop.WebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(OrderCreateRequestDto orderCreateRequest)
+        public async Task<IActionResult> CreateAsync(OrderCreateRequestDto orderCreateRequest)
         {
             Order newOrder = orderCreateRequest.ToDomain();
             try
             {
-                repository.Create(newOrder);
+                await repository.CreateAsync(newOrder);
             }
             catch (Exception e)
             {
                 return Problem(e.Message, null, StatusCodes.Status500InternalServerError);
             }
-            return CreatedAtAction(nameof(ReadById), new { orderId = newOrder.OrderId }, OrderGetResponseDto.FromDomain(newOrder));
+            return CreatedAtAction(nameof(ReadByIdAsync), new { orderId = newOrder.OrderId }, OrderGetResponseDto.FromDomain(newOrder));
         }
 
         [HttpPut("{orderId:int}")]
-        public IActionResult Update(int orderId, [FromBody] bool isPaid)
+        public async Task<IActionResult> UpdateAsync(int orderId, [FromBody] bool isPaid)
         {
             try
             {
-                repository.Update(orderId, isPaid);
+                await repository.UpdateAsync(orderId, isPaid);
             }
             catch (Exception e)
             {
