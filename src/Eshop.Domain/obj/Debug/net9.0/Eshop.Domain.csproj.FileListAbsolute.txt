@@ -9,3 +9,4 @@ C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\refint\Eshop.Domain.dll
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.pdb
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\ref\Eshop.Domain.dll
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.sourcelink.json

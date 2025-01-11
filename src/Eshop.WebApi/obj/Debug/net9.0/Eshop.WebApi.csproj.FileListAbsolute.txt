@@ -67,3 +67,4 @@ c:\Users\Kika\Documents\C#\Eshop\src\Eshop.WebApi\obj\Debug\net9.0\refint\Eshop.
 c:\Users\Kika\Documents\C#\Eshop\src\Eshop.WebApi\obj\Debug\net9.0\Eshop.WebApi.pdb
 c:\Users\Kika\Documents\C#\Eshop\src\Eshop.WebApi\obj\Debug\net9.0\Eshop.WebApi.genruntimeconfig.cache
 c:\Users\Kika\Documents\C#\Eshop\src\Eshop.WebApi\obj\Debug\net9.0\ref\Eshop.WebApi.dll
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.WebApi\obj\Debug\net9.0\Eshop.WebApi.sourcelink.json

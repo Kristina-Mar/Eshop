@@ -1,3 +1,5 @@
+using Eshop.Domain;
+
 namespace Eshop.Persistence.Repositories
 {
     public interface IRepository<T> where T : class

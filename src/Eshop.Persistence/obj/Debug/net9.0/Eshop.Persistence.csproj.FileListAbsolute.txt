@@ -15,3 +15,4 @@ c:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\refint\E
 c:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Persistence.pdb
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Persistence.genruntimeconfig.cache
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\ref\Eshop.Persistence.dll
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Persistence\obj\Debug\net9.0\Eshop.Persistence.sourcelink.json

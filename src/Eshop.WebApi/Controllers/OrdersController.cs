@@ -46,7 +46,7 @@ namespace Eshop.WebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateOrder(OrderCreateRequestDto orderCreateRequest)
+        public IActionResult Create(OrderCreateRequestDto orderCreateRequest)
         {
             Order newOrder = orderCreateRequest.ToDomain();
             try
@@ -61,7 +61,7 @@ namespace Eshop.WebApi.Controllers
         }
 
         [HttpPut("{orderId:int}")]
-        public IActionResult UpdateOrder(int orderId, [FromBody] bool isPaid)
+        public IActionResult Update(int orderId, [FromBody] bool isPaid)
         {
             try
             {

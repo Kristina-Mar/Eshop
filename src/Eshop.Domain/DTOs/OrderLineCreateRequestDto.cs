@@ -2,7 +2,7 @@ using Eshop.Domain.Models;
 
 namespace Eshop.Domain.DTOs
 {
-    public class OrderItemCreateRequestDto(string ItemName, int NumberOfItems, double ItemPrice)
+    public class OrderLineCreateRequestDto(string ItemName, int NumberOfItems, double ItemPrice)
     {
         public string ItemName { get; set; } = ItemName;
         public int NumberOfItems { get; set; } = NumberOfItems;
