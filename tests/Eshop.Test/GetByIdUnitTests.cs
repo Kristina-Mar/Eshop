@@ -28,17 +28,17 @@ public class GetByIdUnitTests
                 new(){
                     OrderLineId = 1,
                     ItemName = "computer",
-                    NumberOfItems = 5,
+                    Quantity = 5,
                     ItemPrice = 14999
                 },
                 new(){
                     OrderLineId = 2,
                     ItemName = "monitor",
-                    NumberOfItems = 10,
+                    Quantity = 10,
                     ItemPrice = 7999
                 }
             },
-            Status = Order.OrderStatus.New
+            Status = Order.OrderStatus.Nová
         };
 
         repositoryMock.ReadByIdAsync(1).Returns(orderFromRepository);
@@ -63,7 +63,7 @@ public class GetByIdUnitTests
                 }
 
             },
-            Status = Order.OrderStatus.New
+            Status = Order.OrderStatus.Nová
         };
 
         // Act

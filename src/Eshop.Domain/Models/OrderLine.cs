@@ -7,7 +7,7 @@ namespace Eshop.Domain.Models
         [Key]
         public int OrderLineId { get; set; }
         public string ItemName { get; set; }
-        public int NumberOfItems { get; set; }
+        public int Quantity { get; set; }
         public double ItemPrice { get; set; }
     }
 }

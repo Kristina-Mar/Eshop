@@ -32,11 +32,11 @@ namespace Eshop.Persistence.Repositories
             Order orderToUpdate = context.Orders.Find(orderId) ?? throw new KeyNotFoundException();
             if (isPaid)
             {
-                context.Entry(orderToUpdate).CurrentValues.SetValues(orderToUpdate.Status = Order.OrderStatus.Paid);
+                context.Entry(orderToUpdate).CurrentValues.SetValues(orderToUpdate.Status = Order.OrderStatus.Zaplacena);
             }
             else
             {
-                context.Entry(orderToUpdate).CurrentValues.SetValues(orderToUpdate.Status = Order.OrderStatus.Cancelled);
+                context.Entry(orderToUpdate).CurrentValues.SetValues(orderToUpdate.Status = Order.OrderStatus.Zrušena);
             }
             await context.SaveChangesAsync();
         }

@@ -56,7 +56,7 @@ public class PostUnitTests
             order.OrderId = 1;
             order.OrderItems[0].OrderLineId = 1;
             order.OrderItems[1].OrderLineId = 2;
-            order.Status = Order.OrderStatus.New;
+            order.Status = Order.OrderStatus.Nová;
         });
 
         // Act

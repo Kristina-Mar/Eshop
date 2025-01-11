@@ -15,7 +15,7 @@ public class OrderLineGetResponseDto
         {
             OrderLineId = orderItem.OrderLineId,
             ItemName = orderItem.ItemName,
-            NumberOfItems = orderItem.NumberOfItems,
+            NumberOfItems = orderItem.Quantity,
             ItemPrice = orderItem.ItemPrice
         };
     }

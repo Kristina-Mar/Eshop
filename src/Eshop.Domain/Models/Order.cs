@@ -13,8 +13,8 @@ public class Order()
     public OrderStatus Status { get; set; }
     public enum OrderStatus
     {
-        New,
-        Paid,
-        Cancelled
+        Nová,
+        Zaplacena,
+        Zrušena
     }
 }

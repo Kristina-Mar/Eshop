@@ -7,6 +7,6 @@ namespace Eshop.Domain.DTOs
         public string ItemName { get; set; } = ItemName;
         public int NumberOfItems { get; set; } = NumberOfItems;
         public double ItemPrice { get; set; } = ItemPrice;
-        public OrderLine ToDomain() => new() { ItemName = ItemName, NumberOfItems = NumberOfItems, ItemPrice = ItemPrice };
+        public OrderLine ToDomain() => new() { ItemName = ItemName, Quantity = NumberOfItems, ItemPrice = ItemPrice };
     }
 }

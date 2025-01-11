@@ -21,9 +21,9 @@ public class PutUnitTests
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
         var controller = new OrdersController(repositoryMock);
 
-        Order order = new() { Status = Order.OrderStatus.New };
+        Order order = new() { Status = Order.OrderStatus.Nová };
 
-        repositoryMock.When(r => r.UpdateAsync(Arg.Any<int>(), true)).Do(callInfo => order.Status = Order.OrderStatus.Paid);
+        repositoryMock.When(r => r.UpdateAsync(Arg.Any<int>(), true)).Do(callInfo => order.Status = Order.OrderStatus.Zaplacena);
 
         // Act
         var result = await controller.UpdateAsync(1, true);
@@ -31,7 +31,7 @@ public class PutUnitTests
         // Assert
         Assert.IsType<NoContentResult>(result);
         await repositoryMock.Received(1).UpdateAsync(Arg.Any<int>(), Arg.Any<bool>());
-        Assert.Equal(Order.OrderStatus.Paid, order.Status);
+        Assert.Equal(Order.OrderStatus.Zaplacena, order.Status);
     }
 
     [Fact]

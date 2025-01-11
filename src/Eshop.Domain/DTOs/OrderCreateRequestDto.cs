@@ -11,7 +11,7 @@ namespace Eshop.Domain.DTOs
             CustomerName = CustomerName,
             OrderDate = OrderDate,
             OrderItems = OrderItemsDtoList.Select(i => i.ToDomain()).ToList(),
-            Status = Order.OrderStatus.New
+            Status = Order.OrderStatus.Nová
         };
     }
 }

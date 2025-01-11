@@ -9,7 +9,7 @@ namespace Eshop.Persistence
         public OrdersContext(string connectionString = "Data Source=../../data/localdb.db")
         {
             this.connectionString = connectionString;
-            this.Database.Migrate();
+           this.Database.Migrate();
         }
 
         public DbSet<Order> Orders { get; set; }
