@@ -3445,11 +3445,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "c:\\Users\\Kika\\Documents\\C#\\Eshop\\src\\Eshop.Persistence\\Eshop.Persistence.csproj": {
-              "projectPath": "c:\\Users\\Kika\\Documents\\C#\\Eshop\\src\\Eshop.Persistence\\Eshop.Persistence.csproj"
+            "C:\\Users\\Kika\\Documents\\C#\\Eshop\\src\\Eshop.Persistence\\Eshop.Persistence.csproj": {
+              "projectPath": "C:\\Users\\Kika\\Documents\\C#\\Eshop\\src\\Eshop.Persistence\\Eshop.Persistence.csproj"
             },
-            "c:\\Users\\Kika\\Documents\\C#\\Eshop\\src\\Eshop.WebApi\\Eshop.WebApi.csproj": {
-              "projectPath": "c:\\Users\\Kika\\Documents\\C#\\Eshop\\src\\Eshop.WebApi\\Eshop.WebApi.csproj"
+            "C:\\Users\\Kika\\Documents\\C#\\Eshop\\src\\Eshop.WebApi\\Eshop.WebApi.csproj": {
+              "projectPath": "C:\\Users\\Kika\\Documents\\C#\\Eshop\\src\\Eshop.WebApi\\Eshop.WebApi.csproj"
             }
           }
         }

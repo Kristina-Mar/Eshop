@@ -14,10 +14,7 @@ public class PaymentProcessingQueue() : IProcessingQueue<Order>
 
     public Order? Fetch()
     {
-        if (_queue.TryDequeue(out Order request) is false)
-        {
-            return null;
-        }
+        _queue.TryDequeue(out Order? request);
         return request;
     }
 }
