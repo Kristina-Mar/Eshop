@@ -2,6 +2,7 @@
 
 using Eshop.Domain;
 using Eshop.Domain.DTOs;
+using Eshop.Persistence;
 using Eshop.Persistence.Repositories;
 using Eshop.WebApi.Controllers;
 using Microsoft.AspNetCore.Http;
@@ -17,7 +18,8 @@ public class GetByIdUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var controller = new OrdersController(repositoryMock);
+        var queue = new PaymentProcessingQueue();
+        var controller = new OrdersController(repositoryMock, queue);
 
         Order orderFromRepository = new()
         {
@@ -82,7 +84,8 @@ public class GetByIdUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var controller = new OrdersController(repositoryMock);
+        var queue = new PaymentProcessingQueue();
+        var controller = new OrdersController(repositoryMock, queue);
 
         repositoryMock.ReadByIdAsync(-1).ReturnsNull();
 
@@ -99,7 +102,8 @@ public class GetByIdUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var controller = new OrdersController(repositoryMock);
+        var queue = new PaymentProcessingQueue();
+        var controller = new OrdersController(repositoryMock, queue);
 
         repositoryMock.ReadByIdAsync(-1).Throws(new Exception());
 

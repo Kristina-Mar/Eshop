@@ -2,6 +2,7 @@
 
 using Eshop.Domain;
 using Eshop.Domain.DTOs;
+using Eshop.Persistence;
 using Eshop.Persistence.Repositories;
 using Eshop.WebApi.Controllers;
 using Microsoft.AspNetCore.Http;
@@ -16,7 +17,8 @@ public class GetUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var controller = new OrdersController(repositoryMock);
+        var queue = new PaymentProcessingQueue();
+        var controller = new OrdersController(repositoryMock, queue);
 
         List<Order> ordersFromRepository = new() {
            new() {
@@ -83,7 +85,8 @@ public class GetUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var controller = new OrdersController(repositoryMock);
+        var queue = new PaymentProcessingQueue();
+        var controller = new OrdersController(repositoryMock, queue);
         var noOrders = new List<Order>();
 
         repositoryMock.ReadAsync().Returns(noOrders);
@@ -101,7 +104,8 @@ public class GetUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var controller = new OrdersController(repositoryMock);
+        var queue = new PaymentProcessingQueue();
+        var controller = new OrdersController(repositoryMock, queue);
 
         repositoryMock.ReadAsync().Throws(new Exception());
 

@@ -7,8 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddControllers();
     builder.Services.AddSwaggerGen();
 
+    builder.Services.AddHostedService<PaymentProcessingService>();
+
     builder.Services.AddDbContext<OrdersContext>();
     builder.Services.AddScoped<IRepositoryAsync<Order>, OrderRepositoryAsync>();
+    builder.Services.AddSingleton<IProcessingQueue<Order>, PaymentProcessingQueue>();
 }
 
 var app = builder.Build();

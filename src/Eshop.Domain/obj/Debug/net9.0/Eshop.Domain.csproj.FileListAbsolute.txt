@@ -5,8 +5,8 @@ C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.AssemblyInfoInputs.cache
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.AssemblyInfo.cs
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.sourcelink.json
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.dll
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\refint\Eshop.Domain.dll
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.pdb
 C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\ref\Eshop.Domain.dll
-C:\Users\Kika\Documents\C#\Eshop\src\Eshop.Domain\obj\Debug\net9.0\Eshop.Domain.sourcelink.json

@@ -1,0 +1,41 @@
+@host=http://localhost
+@port=5247
+
+
+//List all ToDoItems
+GET {{host}}:{{port}}/api/ToDoItems
+
+###
+
+//Get specific ToDoItem by id
+@itemToGetId = 16
+GET {{host}}:{{port}}/api/ToDoItems/{{itemToGetId}}
+
+###
+
+//Add new ToDoItem
+POST {{host}}:{{port}}/api/ToDoItems
+Content-Type: application/json
+
+{
+  "name": "Example New Task",
+  "category": "Work",
+  "description": "Example New Description",
+  "isCompleted": false
+}
+
+###
+
+//Update existing ToDoItem by id
+@orderToUpdateId = 6
+
+PUT {{host}}:{{port}}/api/Orders/{{orderToUpdateId}}
+Content-Type: application/json
+
+false
+
+###
+
+//Delete exisiting ToDoItem by id
+@itemToDeleteId = 24
+DELETE {{host}}:{{port}}/api/ToDoItems/{{itemToDeleteId}}

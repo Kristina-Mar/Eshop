@@ -2,14 +2,16 @@ using Eshop.Domain.DTOs;
 using Eshop.Persistence.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Eshop.Domain;
+using Eshop.Persistence;
 
 namespace Eshop.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OrdersController(IRepositoryAsync<Order> repository) : ControllerBase
+    public class OrdersController(IRepositoryAsync<Order> repository, IProcessingQueue<Order> processingQueue) : ControllerBase
     {
-        private readonly IRepositoryAsync<Order> repository = repository;
+        private readonly IRepositoryAsync<Order> _repository = repository;
+        private readonly IProcessingQueue<Order> _processingQueue = processingQueue;
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderGetResponseDto>>> ReadAsync()
@@ -18,7 +20,7 @@ namespace Eshop.WebApi.Controllers
 
             try
             {
-                allOrders = await repository.ReadAsync();
+                allOrders = await _repository.ReadAsync();
             }
             catch (Exception e)
             {
@@ -36,7 +38,7 @@ namespace Eshop.WebApi.Controllers
 
             try
             {
-                order = await repository.ReadByIdAsync(orderId);
+                order = await _repository.ReadByIdAsync(orderId);
             }
             catch (Exception e)
             {
@@ -52,7 +54,7 @@ namespace Eshop.WebApi.Controllers
             Order newOrder = orderCreateRequest.ToDomain();
             try
             {
-                await repository.CreateAsync(newOrder);
+                await _repository.CreateAsync(newOrder);
             }
             catch (Exception e)
             {
@@ -66,20 +68,27 @@ namespace Eshop.WebApi.Controllers
         {
             try
             {
-                await repository.UpdateAsync(orderId, isPaid);
-            }
-            catch (Exception e)
-            {
-                if (e is KeyNotFoundException)
+                var orderToUpdate = await _repository.ReadByIdAsync(orderId);
+
+                if (orderToUpdate is null)
                 {
                     return NotFound();
                 }
+                if (isPaid)
+                {
+                    orderToUpdate.Status = Order.OrderStatus.Zaplacena;
+                }
                 else
                 {
-                    return Problem(e.Message, null, StatusCodes.Status500InternalServerError);
+                    orderToUpdate.Status = Order.OrderStatus.Zrušena;
                 }
+                _processingQueue.Add(orderToUpdate);
             }
-            return NoContent();
+            catch (Exception e)
+            {
+                return Problem(e.Message, null, StatusCodes.Status500InternalServerError);
+            }
+            return Accepted();
         }
     }
 }
