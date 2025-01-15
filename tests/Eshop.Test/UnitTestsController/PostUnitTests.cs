@@ -28,7 +28,7 @@ public class PostUnitTests
                 }
                 );
 
-        OrderGetResponseDto orderReturnedFromRepository = new()
+        OrderGetResponseDto orderDtoFromRepository = new()
         {
             OrderId = 1,
             CustomerName = "customer",
@@ -47,6 +47,7 @@ public class PostUnitTests
                     ItemPrice = 7999
                 }
             },
+            Status = Order.OrderStatus.Nová
         };
 
         repositoryMock.When(r => r.CreateAsync(Arg.Any<Order>())).Do(callInfo =>
@@ -59,13 +60,13 @@ public class PostUnitTests
         });
 
         // Act
-        var result = await controller.CreateAsync(orderRequestDto);
+        var actionResult = await controller.CreateAsync(orderRequestDto);
 
         // Assert
-        var resultResult = Assert.IsType<CreatedAtActionResult>(result);
-        var realOrder = resultResult.Value as OrderGetResponseDto;
-        Assert.Equivalent(orderReturnedFromRepository, realOrder, true);
-        Assert.NotNull(realOrder);
+        var objectResult = Assert.IsType<CreatedAtActionResult>(actionResult);
+        var realOrderDto = objectResult.Value as OrderGetResponseDto;
+        Assert.Equivalent(orderDtoFromRepository, realOrderDto, true);
+        Assert.NotNull(realOrderDto);
         await repositoryMock.Received(1).CreateAsync(Arg.Any<Order>());
     }
 
@@ -92,8 +93,8 @@ public class PostUnitTests
         var actionResult = await controller.CreateAsync(orderRequestDto);
 
         // Assert
-        var resultResult = Assert.IsType<ObjectResult>(actionResult);
-        Assert.Equal(StatusCodes.Status500InternalServerError, resultResult.StatusCode);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult);
+        Assert.Equal(StatusCodes.Status500InternalServerError, objectResult.StatusCode);
         await repositoryMock.Received(1).CreateAsync(Arg.Any<Order>());
     }
 }

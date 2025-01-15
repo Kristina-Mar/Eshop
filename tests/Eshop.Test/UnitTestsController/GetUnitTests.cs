@@ -70,13 +70,13 @@ public class GetUnitTests
         };
 
         // Act
-        var result = await controller.ReadAsync();
+        var actionResult = await controller.ReadAsync();
 
         // Assert
-        var resultResult = Assert.IsType<OkObjectResult>(result.Result);
-        var realOrders = resultResult.Value as List<OrderGetResponseDto>;
-        Assert.Equivalent(expectedOrdersDto, realOrders, true);
-        Assert.NotNull(realOrders);
+        var objectResult = Assert.IsType<OkObjectResult>(actionResult.Result);
+        var realOrdersDto = objectResult.Value as List<OrderGetResponseDto>;
+        Assert.Equivalent(expectedOrdersDto, realOrdersDto, true);
+        Assert.NotNull(realOrdersDto);
         await repositoryMock.Received(1).ReadAsync();
     }
 
@@ -92,10 +92,10 @@ public class GetUnitTests
         repositoryMock.ReadAsync().Returns(noOrders);
 
         // Act
-        var result = await controller.ReadAsync();
+        var actionResult = await controller.ReadAsync();
 
         // Assert
-        Assert.IsType<NotFoundResult>(result.Result);
+        Assert.IsType<NotFoundResult>(actionResult.Result);
         await repositoryMock.Received(1).ReadAsync();
     }
 
@@ -113,8 +113,8 @@ public class GetUnitTests
         var actionResult = await controller.ReadAsync();
 
         // Assert
-        var resultResult = Assert.IsType<ObjectResult>(actionResult.Result);
-        Assert.Equal(StatusCodes.Status500InternalServerError, resultResult.StatusCode);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal(StatusCodes.Status500InternalServerError, objectResult.StatusCode);
         await repositoryMock.Received(1).ReadAsync();
     }
 }

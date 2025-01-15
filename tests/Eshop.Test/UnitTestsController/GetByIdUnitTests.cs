@@ -43,7 +43,7 @@ public class GetByIdUnitTests
             Status = Order.OrderStatus.Nová
         };
 
-        repositoryMock.ReadByIdAsync(1).Returns(orderFromRepository);
+        repositoryMock.ReadByIdAsync(Arg.Any<int>()).Returns(orderFromRepository);
 
         OrderGetResponseDto expectedOrderDto = new()
         {
@@ -69,13 +69,13 @@ public class GetByIdUnitTests
         };
 
         // Act
-        var result = await controller.ReadByIdAsync(1);
+        var actionResult = await controller.ReadByIdAsync(1);
 
         // Assert
-        var resultResult = Assert.IsType<OkObjectResult>(result.Result);
-        var realOrder = resultResult.Value as OrderGetResponseDto;
-        Assert.Equivalent(expectedOrderDto, realOrder, true);
-        Assert.NotNull(realOrder);
+        var objectResult = Assert.IsType<OkObjectResult>(actionResult.Result);
+        var realOrderDto = objectResult.Value as OrderGetResponseDto;
+        Assert.Equivalent(expectedOrderDto, realOrderDto, true);
+        Assert.NotNull(realOrderDto);
         await repositoryMock.Received(1).ReadByIdAsync(1);
     }
 
@@ -87,13 +87,13 @@ public class GetByIdUnitTests
         var queue = new PaymentProcessingQueue();
         var controller = new OrdersController(repositoryMock, queue);
 
-        repositoryMock.ReadByIdAsync(-1).ReturnsNull();
+        repositoryMock.ReadByIdAsync(Arg.Any<int>()).ReturnsNull();
 
         // Act
-        var result = await controller.ReadByIdAsync(-1);
+        var actionResult = await controller.ReadByIdAsync(-1);
 
         // Assert
-        Assert.IsType<NotFoundResult>(result.Result);
+        Assert.IsType<NotFoundResult>(actionResult.Result);
         await repositoryMock.Received(1).ReadByIdAsync(-1);
     }
 
@@ -105,14 +105,14 @@ public class GetByIdUnitTests
         var queue = new PaymentProcessingQueue();
         var controller = new OrdersController(repositoryMock, queue);
 
-        repositoryMock.ReadByIdAsync(-1).Throws(new Exception());
+        repositoryMock.ReadByIdAsync(Arg.Any<int>()).Throws(new Exception());
 
         // Act
         var actionResult = await controller.ReadByIdAsync(-1);
 
         // Assert
-        var resultResult = Assert.IsType<ObjectResult>(actionResult.Result);
-        Assert.Equal(StatusCodes.Status500InternalServerError, resultResult.StatusCode);
+        var objectResult = Assert.IsType<ObjectResult>(actionResult.Result);
+        Assert.Equal(StatusCodes.Status500InternalServerError, objectResult.StatusCode);
         await repositoryMock.Received(1).ReadByIdAsync(-1);
     }
 }

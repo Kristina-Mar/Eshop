@@ -5,7 +5,6 @@ using Eshop.Persistence;
 using Eshop.Persistence.Repositories;
 using Eshop.WebApi.Controllers;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
@@ -18,8 +17,8 @@ public class PutUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var queue = Substitute.For<IProcessingQueue<Order>>();
-        var controller = new OrdersController(repositoryMock, queue);
+        var queueMock = Substitute.For<IProcessingQueue<Order>>();
+        var controller = new OrdersController(repositoryMock, queueMock);
 
         Order orderFromRepository = new()
         {
@@ -43,15 +42,15 @@ public class PutUnitTests
             Status = Order.OrderStatus.Nová
         };
 
-        repositoryMock.ReadByIdAsync(1).Returns(orderFromRepository);
+        repositoryMock.ReadByIdAsync(Arg.Any<int>()).Returns(orderFromRepository);
 
         // Act
-        var result = await controller.UpdateAsync(orderFromRepository.OrderId, true);
+        var actionResult = await controller.UpdateAsync(orderFromRepository.OrderId, true);
 
         // Assert
-        Assert.IsType<AcceptedResult>(result);
-        await repositoryMock.Received(1).ReadByIdAsync(Arg.Any<int>());
-        queue.Received(1).Add(Arg.Any<Order>());
+        Assert.IsType<AcceptedResult>(actionResult);
+        await repositoryMock.Received(1).ReadByIdAsync(orderFromRepository.OrderId);
+        queueMock.Received(1).Add(orderFromRepository);
         Assert.Equal(Order.OrderStatus.Zaplacena, orderFromRepository.Status);
     }
 
@@ -60,18 +59,18 @@ public class PutUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var queue = Substitute.For<IProcessingQueue<Order>>();
-        var controller = new OrdersController(repositoryMock, queue);
+        var queueMock = Substitute.For<IProcessingQueue<Order>>();
+        var controller = new OrdersController(repositoryMock, queueMock);
 
-        repositoryMock.ReadByIdAsync(1).ReturnsNull();
+        repositoryMock.ReadByIdAsync(Arg.Any<int>()).ReturnsNull();
 
         // Act
-        var result = await controller.UpdateAsync(-1, false);
+        var actionResult = await controller.UpdateAsync(-1, false);
 
         // Assert
-        Assert.IsType<NotFoundResult>(result);
-        await repositoryMock.Received(1).ReadByIdAsync(Arg.Any<int>());
-        queue.Received(0).Add(Arg.Any<Order>());
+        Assert.IsType<NotFoundResult>(actionResult);
+        await repositoryMock.Received(1).ReadByIdAsync(-1);
+        queueMock.Received(0).Add(Arg.Any<Order>());
     }
 
     [Fact]
@@ -79,8 +78,8 @@ public class PutUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var queue = Substitute.For<IProcessingQueue<Order>>();
-        var controller = new OrdersController(repositoryMock, queue);
+        var queueMock = Substitute.For<IProcessingQueue<Order>>();
+        var controller = new OrdersController(repositoryMock, queueMock);
 
         Order orderFromRepository = new()
         {
@@ -110,9 +109,9 @@ public class PutUnitTests
         var actionResult = await controller.UpdateAsync(orderFromRepository.OrderId, true);
 
         // Assert
-        var resultResult = Assert.IsType<ObjectResult>(actionResult);
-        Assert.Equal(StatusCodes.Status500InternalServerError, resultResult.StatusCode);
-        await repositoryMock.Received(1).ReadByIdAsync(Arg.Any<int>());
-        queue.Received(0).Add(Arg.Any<Order>());
+        var objectResult = Assert.IsType<ObjectResult>(actionResult);
+        Assert.Equal(StatusCodes.Status500InternalServerError, objectResult.StatusCode);
+        await repositoryMock.Received(1).ReadByIdAsync(orderFromRepository.OrderId);
+        queueMock.Received(0).Add(Arg.Any<Order>());
     }
 }
