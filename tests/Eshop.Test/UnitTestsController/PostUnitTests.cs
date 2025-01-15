@@ -2,14 +2,12 @@
 
 using Eshop.Domain;
 using Eshop.Domain.DTOs;
-using Eshop.Domain.Models;
+using Eshop.Persistence;
 using Eshop.Persistence.Repositories;
 using Eshop.WebApi.Controllers;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
-using NSubstitute.ExceptionExtensions;
 
 public class PostUnitTests
 {
@@ -18,7 +16,8 @@ public class PostUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var controller = new OrdersController(repositoryMock);
+        var queue = new PaymentProcessingQueue();
+        var controller = new OrdersController(repositoryMock, queue);
 
         OrderCreateRequestDto orderRequestDto = new(
             "customer",
@@ -75,7 +74,8 @@ public class PostUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var controller = new OrdersController(repositoryMock);
+        var queue = new PaymentProcessingQueue();
+        var controller = new OrdersController(repositoryMock, queue);
 
         repositoryMock.When(r => r.CreateAsync(Arg.Any<Order>())).Throws(new Exception());
 

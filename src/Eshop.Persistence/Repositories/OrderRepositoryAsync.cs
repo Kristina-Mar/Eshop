@@ -27,17 +27,9 @@ namespace Eshop.Persistence.Repositories
             await context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(int orderId, bool isPaid)
+        public async Task UpdateAsync(Order updatedOrder)
         {
-            Order orderToUpdate = context.Orders.Find(orderId) ?? throw new KeyNotFoundException();
-            if (isPaid)
-            {
-                context.Entry(orderToUpdate).CurrentValues.SetValues(orderToUpdate.Status = Order.OrderStatus.Zaplacena);
-            }
-            else
-            {
-                context.Entry(orderToUpdate).CurrentValues.SetValues(orderToUpdate.Status = Order.OrderStatus.Zrušena);
-            }
+            context.Orders.Update(updatedOrder);
             await context.SaveChangesAsync();
         }
     }
