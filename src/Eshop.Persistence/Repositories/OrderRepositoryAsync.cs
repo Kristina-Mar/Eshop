@@ -16,9 +16,9 @@ namespace Eshop.Persistence.Repositories
             return await context.Orders.Include(o => o.OrderItems).ToListAsync();
         }
 
-        public async Task<Order> ReadByIdAsync(int orderId)
+        public async Task<Order>? ReadByIdAsync(int orderId)
         {
-            return await context.Orders.Include(o => o.OrderItems).FirstAsync(o => o.OrderId == orderId);
+            return await context.Orders.Include(o => o.OrderItems).FirstOrDefaultAsync(o => o.OrderId == orderId);
         }
 
         public async Task CreateAsync(Order order)
