@@ -1,0 +1,20 @@
+services:
+  webapi:
+    ports:
+      - 5247:5247
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - db:/app/data
+    networks:
+      - eshop-network
+    environment:
+     - BOOTSTRAP_SERVER=broker1:19092
+
+networks:
+  eshop-network:
+    driver: bridge
+
+volumes:
+  db:

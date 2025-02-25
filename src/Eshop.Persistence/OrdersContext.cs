@@ -7,9 +7,9 @@ namespace Eshop.Persistence
     {
         private readonly string connectionString;
 
-        public OrdersContext(string connectionString = "Data Source=../../data/localdb.db")
+        public OrdersContext()
         {
-            this.connectionString = connectionString;
+            connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? "Data Source=../../data/localdb.db";
             this.Database.Migrate();
         }
 

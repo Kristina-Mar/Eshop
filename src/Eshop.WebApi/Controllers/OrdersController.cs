@@ -2,16 +2,18 @@ using Eshop.Domain.DTOs;
 using Eshop.Persistence.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Eshop.Domain;
-using Eshop.Persistence;
+using Eshop.WebApi.KafkaProducers;
+using Confluent.Kafka;
+using System.Text.Json;
 
 namespace Eshop.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OrdersController(IRepositoryAsync<Order> repository, IProcessingQueue<Order> processingQueue) : ControllerBase
+    public class OrdersController(IRepositoryAsync<Order> repository, IKafkaProducer producer) : ControllerBase
     {
         private readonly IRepositoryAsync<Order> _repository = repository;
-        private readonly IProcessingQueue<Order> _processingQueue = processingQueue;
+        private readonly IKafkaProducer _producer = producer;
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderGetResponseDto>>> ReadAsync()
@@ -82,7 +84,16 @@ namespace Eshop.WebApi.Controllers
                 {
                     orderToUpdate.Status = Order.OrderStatus.Zrušena;
                 }
-                _processingQueue.Add(orderToUpdate);
+
+                var result = await _producer.ProduceAsync("order-status-update", new Message<int, string>
+                {
+                    Key = orderId,
+                    Value = JsonSerializer.Serialize(orderToUpdate)
+                });
+            }
+            catch (KafkaException ke)
+            {
+                return Problem(ke.Message, null, StatusCodes.Status502BadGateway, "Error producing message to Kafka.");
             }
             catch (Exception e)
             {

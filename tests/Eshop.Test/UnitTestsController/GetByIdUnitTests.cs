@@ -2,9 +2,9 @@
 
 using Eshop.Domain;
 using Eshop.Domain.DTOs;
-using Eshop.Persistence;
 using Eshop.Persistence.Repositories;
 using Eshop.WebApi.Controllers;
+using Eshop.WebApi.KafkaProducers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
@@ -18,8 +18,8 @@ public class GetByIdUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var queue = new PaymentProcessingQueue();
-        var controller = new OrdersController(repositoryMock, queue);
+        var producerMock = Substitute.For<IKafkaProducer>();
+        var controller = new OrdersController(repositoryMock, producerMock);
 
         Order orderFromRepository = new()
         {
@@ -84,8 +84,8 @@ public class GetByIdUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var queue = new PaymentProcessingQueue();
-        var controller = new OrdersController(repositoryMock, queue);
+        var producerMock = Substitute.For<IKafkaProducer>();
+        var controller = new OrdersController(repositoryMock, producerMock);
 
         repositoryMock.ReadByIdAsync(Arg.Any<int>()).ReturnsNull();
 
@@ -102,8 +102,8 @@ public class GetByIdUnitTests
     {
         // Arrange
         var repositoryMock = Substitute.For<IRepositoryAsync<Order>>();
-        var queue = new PaymentProcessingQueue();
-        var controller = new OrdersController(repositoryMock, queue);
+        var producerMock = Substitute.For<IKafkaProducer>();
+        var controller = new OrdersController(repositoryMock, producerMock);
 
         repositoryMock.ReadByIdAsync(Arg.Any<int>()).Throws(new Exception());
 
