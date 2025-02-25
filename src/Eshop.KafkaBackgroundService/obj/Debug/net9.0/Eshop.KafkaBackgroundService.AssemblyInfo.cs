@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Eshop.KafkaBackgroundService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c9199266f07af2834a09f2bf89bbdecc2fed1f3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49e28ad406956355f7674523805ccffcdd0e12ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("Eshop.KafkaBackgroundService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Eshop.KafkaBackgroundService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -10,7 +10,7 @@ services:
     networks:
       - eshop-network
     environment:
-     - BOOTSTRAP_SERVER=broker1:19092
+     - BOOTSTRAP_SERVER=broker1:19092,broker2:19092,broker3:19092
 
 networks:
   eshop-network:

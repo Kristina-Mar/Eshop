@@ -18,7 +18,7 @@ public class KafkaBackgroundService : BackgroundService
         var config = new ConsumerConfig
         {
             GroupId = "order-status-update-group",
-            BootstrapServers = Environment.GetEnvironmentVariable("BOOTSTRAP_SERVER") ?? "localhost:29092",
+            BootstrapServers = Environment.GetEnvironmentVariable("BOOTSTRAP_SERVER") ?? "localhost:29092,localhost:39092,localhost:49092",
             AutoOffsetReset = AutoOffsetReset.Earliest,
             //SecurityProtocol = SecurityProtocol.SaslSsl,
             EnableAutoCommit = true,

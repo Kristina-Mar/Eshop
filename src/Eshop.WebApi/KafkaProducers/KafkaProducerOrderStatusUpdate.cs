@@ -10,7 +10,7 @@ namespace Eshop.WebApi.KafkaProducers
         {
             var config = new ProducerConfig
             {
-                BootstrapServers = Environment.GetEnvironmentVariable("BOOTSTRAP_SERVER") ?? "localhost:29092", // identifies one or more Kafka brokers, it will be used to establish the original connection to the Kafka cluster
+                BootstrapServers = Environment.GetEnvironmentVariable("BOOTSTRAP_SERVER") ?? "localhost:29092,localhost:39092,localhost:49092", // identifies one or more Kafka brokers, it will be used to establish the original connection to the Kafka cluster
                 ClientId = "OrderStatusUpdate", // used to identify the producer
                 Acks = Acks.All // defines whether the producer will wait for a response from the broker
                 //Some other possible settings below, not necessary for this app
